@@ -2,7 +2,7 @@ import os
 
 ARCHIVO = "notas.txt"
 
-def p(n, c1, c2, c3):
+def registrar_estudiante(n, c1, c2, c3):
     if n != "" and c1 >= 0 and c2 >= 0 and c3 >= 0:
         pr = (c1 + c2 + c3) / 3
         if pr >= 7:
@@ -25,7 +25,7 @@ def p(n, c1, c2, c3):
         print("Datos incorrectos")
 
 
-def l():
+def listar_registros():
     if os.path.exists(ARCHIVO):
         f = open(ARCHIVO)
         print("-" * 70)
@@ -44,7 +44,7 @@ def l():
         print("No existen registros")
 
 
-def r():
+def mostrar_resumen():
     if os.path.exists(ARCHIVO):
         f = open(ARCHIVO)
         aprobados = 0
@@ -64,9 +64,9 @@ def r():
         print("Reprobados:", reprobados)
 
 
-p("Ana", 8, 9, 10)
-p("Luis", 5, 6, 4)
-p("Carlos", 7, 8, 6)
+registrar_estudiante("Ana", 8, 9, 10)
+registrar_estudiante("Luis", 5, 6, 4)
+registrar_estudiante("Carlos", 7, 8, 6)
 
-l()
-r()
+listar_registros()
+mostrar_resumen()
