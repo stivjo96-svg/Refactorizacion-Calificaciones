@@ -2,24 +2,24 @@ import os
 
 ARCHIVO = "notas.txt"
 
-def registrar_estudiante(n, c1, c2, c3):
-    if n != "" and c1 >= 0 and c2 >= 0 and c3 >= 0:
-        pr = (c1 + c2 + c3) / 3
-        if pr >= 7:
-            e = "APROBADO"
+def registrar_estudiante(nombre, nota1, nota2, nota3):
+    if nombre != "" and nota1 >= 0 and nota2 >= 0 and nota3 >= 0:
+        promedio = (nota1 + nota2 + nota3) / 3
+        if promedio >= 7:
+            estado = "APROBADO"
         else:
-            e = "REPROBADO"
+            estado = "REPROBADO"
 
-        f = open(ARCHIVO, "a")
-        f.write(
-            n + "," +
-            str(c1) + "," +
-            str(c2) + "," +
-            str(c3) + "," +
-            str(pr) + "," +
-            e + "\n"
+        archivo = open(ARCHIVO, "a")
+        archivo.write(
+            nombre + "," +
+            str(nota1) + "," +
+            str(nota2) + "," +
+            str(nota3) + "," +
+            str(promedio) + "," +
+            estado + "\n"
         )
-        f.close()
+        archivo.close()
         print("Registro guardado")
     else:
         print("Datos incorrectos")
@@ -29,15 +29,15 @@ def listar_registros():
     if os.path.exists(ARCHIVO):
         f = open(ARCHIVO)
         print("-" * 70)
-        for x in f:
-            d = x.strip().split(",")
+        for linea in f:
+            datos = linea.strip().split(",")
             print(
-                d[0],
-                d[1],
-                d[2],
-                d[3],
-                d[4],
-                d[5]
+                datos[0],
+                datos[1],
+                datos[2],
+                datos[3],
+                datos[4],
+                datos[5]
             )
         f.close()
     else:
