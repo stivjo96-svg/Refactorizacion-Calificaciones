@@ -64,9 +64,14 @@ def mostrar_resumen():
         print("Reprobados:", reprobados)
 
 
-registrar_estudiante("Ana", 8, 9, 10)
-registrar_estudiante("Luis", 5, 6, 4)
-registrar_estudiante("Carlos", 7, 8, 6)
+def main():
+    registrar_estudiante("Ana", 8, 9, 10)
+    registrar_estudiante("Luis", 5, 6, 4)
+    registrar_estudiante("Carlos", 7, 8, 6)
 
-listar_registros()
-mostrar_resumen()
+    listar_registros()
+    mostrar_resumen()
+
+
+if __name__ == "__main__":
+    main()
