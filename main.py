@@ -2,11 +2,13 @@ import os
 
 ARCHIVO = "notas.txt"
 
+NOTA_APROBACION = 7
+
 def registrar_estudiante(nombre, nota1, nota2, nota3):
     if nombre != "" and nota1 >= 0 and nota2 >= 0 and nota3 >= 0:
         promedio = (nota1 + nota2 + nota3) / 3
 
-        if promedio >= 7:
+        if promedio >= NOTA_APROBACION:
             estado = "APROBADO"
         else:
             estado = "REPROBADO"
