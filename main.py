@@ -2,29 +2,31 @@ import os
 
 ARCHIVO = "notas.txt"
 
-def calcular_promedio(c1, c2, c3):
-    return (c1 + c2 + c3) / 3
+
+def calcular_promedio(nota1, nota2, nota3):
+    return (nota1 + nota2 + nota3) / 3
 
 
-def p(n, c1, c2, c3):
-    if n != "" and c1 >= 0 and c2 >= 0 and c3 >= 0:
-        pr = calcular_promedio(c1, c2, c3)
+def p(nombre, nota1, nota2, nota3):
+    if nombre != "" and nota1 >= 0 and nota2 >= 0 and nota3 >= 0:
+        promedio = calcular_promedio(nota1, nota2, nota3)
 
-        if pr >= 7:
-            e = "APROBADO"
+        if promedio >= 7:
+            estado = "APROBADO"
         else:
-            e = "REPROBADO"
+            estado = "REPROBADO"
 
-        f = open(ARCHIVO, "a")
-        f.write(
-            n + "," +
-            str(c1) + "," +
-            str(c2) + "," +
-            str(c3) + "," +
-            str(pr) + "," +
-            e + "\n"
+        archivo = open(ARCHIVO, "a")
+        archivo.write(
+            nombre + "," +
+            str(nota1) + "," +
+            str(nota2) + "," +
+            str(nota3) + "," +
+            str(promedio) + "," +
+            estado + "\n"
         )
-        f.close()
+        archivo.close()
+
         print("Registro guardado")
     else:
         print("Datos incorrectos")
@@ -32,38 +34,44 @@ def p(n, c1, c2, c3):
 
 def l():
     if os.path.exists(ARCHIVO):
-        f = open(ARCHIVO)
+        archivo = open(ARCHIVO)
+
         print("-" * 70)
-        for x in f:
-            d = x.strip().split(",")
+
+        for linea in archivo:
+            datos = linea.strip().split(",")
+
             print(
-                d[0],
-                d[1],
-                d[2],
-                d[3],
-                d[4],
-                d[5]
+                datos[0],
+                datos[1],
+                datos[2],
+                datos[3],
+                datos[4],
+                datos[5]
             )
-        f.close()
+
+        archivo.close()
+
     else:
         print("No existen registros")
 
 
 def r():
     if os.path.exists(ARCHIVO):
-        f = open(ARCHIVO)
+        archivo = open(ARCHIVO)
+
         aprobados = 0
         reprobados = 0
 
-        for x in f:
-            d = x.strip().split(",")
+        for linea in archivo:
+            datos = linea.strip().split(",")
 
-            if d[5] == "APROBADO":
+            if datos[5] == "APROBADO":
                 aprobados += 1
             else:
                 reprobados += 1
 
-        f.close()
+        archivo.close()
 
         print("Aprobados:", aprobados)
         print("Reprobados:", reprobados)
