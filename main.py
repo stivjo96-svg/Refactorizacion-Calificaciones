@@ -2,9 +2,14 @@ import os
 
 ARCHIVO = "notas.txt"
 
+def calcular_promedio(c1, c2, c3):
+    return (c1 + c2 + c3) / 3
+
+
 def p(n, c1, c2, c3):
     if n != "" and c1 >= 0 and c2 >= 0 and c3 >= 0:
-        pr = (c1 + c2 + c3) / 3
+        pr = calcular_promedio(c1, c2, c3)
+
         if pr >= 7:
             e = "APROBADO"
         else:
