@@ -7,7 +7,7 @@ def calcular_promedio(nota1, nota2, nota3):
     return (nota1 + nota2 + nota3) / 3
 
 
-def p(nombre, nota1, nota2, nota3):
+def registrar_estudiante(nombre, nota1, nota2, nota3):
     if nombre != "" and nota1 >= 0 and nota2 >= 0 and nota3 >= 0:
         promedio = calcular_promedio(nota1, nota2, nota3)
 
@@ -32,7 +32,7 @@ def p(nombre, nota1, nota2, nota3):
         print("Datos incorrectos")
 
 
-def l():
+def listar_registros():
     if os.path.exists(ARCHIVO):
         archivo = open(ARCHIVO)
 
@@ -56,7 +56,7 @@ def l():
         print("No existen registros")
 
 
-def r():
+def mostrar_resumen():
     if os.path.exists(ARCHIVO):
         archivo = open(ARCHIVO)
 
@@ -77,9 +77,9 @@ def r():
         print("Reprobados:", reprobados)
 
 
-p("Ana", 8, 9, 10)
-p("Luis", 5, 6, 4)
-p("Carlos", 7, 8, 6)
+registrar_estudiante("Ana", 8, 9, 10)
+registrar_estudiante("Luis", 5, 6, 4)
+registrar_estudiante("Carlos", 7, 8, 6)
 
-l()
-r()
+listar_registros()
+mostrar_resumen()
