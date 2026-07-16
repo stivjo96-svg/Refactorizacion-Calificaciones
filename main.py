@@ -16,16 +16,15 @@ def registrar_estudiante(nombre, nota1, nota2, nota3):
         else:
             estado = "REPROBADO"
 
-        archivo = open(ARCHIVO, "a")
-        archivo.write(
-            nombre + "," +
-            str(nota1) + "," +
-            str(nota2) + "," +
-            str(nota3) + "," +
-            str(promedio) + "," +
-            estado + "\n"
-        )
-        archivo.close()
+        with open(ARCHIVO, "a") as archivo:
+            archivo.write(
+                nombre + "," +
+                str(nota1) + "," +
+                str(nota2) + "," +
+                str(nota3) + "," +
+                str(promedio) + "," +
+                estado + "\n"
+            )
 
         print("Registro guardado")
     else:
@@ -34,44 +33,37 @@ def registrar_estudiante(nombre, nota1, nota2, nota3):
 
 def listar_registros():
     if os.path.exists(ARCHIVO):
-        archivo = open(ARCHIVO)
-
         print("-" * 70)
 
-        for linea in archivo:
-            datos = linea.strip().split(",")
+        with open(ARCHIVO, "r") as archivo:
+            for linea in archivo:
+                datos = linea.strip().split(",")
 
-            print(
-                datos[0],
-                datos[1],
-                datos[2],
-                datos[3],
-                datos[4],
-                datos[5]
-            )
-
-        archivo.close()
-
+                print(
+                    datos[0],
+                    datos[1],
+                    datos[2],
+                    datos[3],
+                    datos[4],
+                    datos[5]
+                )
     else:
         print("No existen registros")
 
 
 def mostrar_resumen():
     if os.path.exists(ARCHIVO):
-        archivo = open(ARCHIVO)
-
         aprobados = 0
         reprobados = 0
 
-        for linea in archivo:
-            datos = linea.strip().split(",")
+        with open(ARCHIVO, "r") as archivo:
+            for linea in archivo:
+                datos = linea.strip().split(",")
 
-            if datos[5] == "APROBADO":
-                aprobados += 1
-            else:
-                reprobados += 1
-
-        archivo.close()
+                if datos[5] == "APROBADO":
+                    aprobados += 1
+                else:
+                    reprobados += 1
 
         print("Aprobados:", aprobados)
         print("Reprobados:", reprobados)
